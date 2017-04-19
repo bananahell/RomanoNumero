@@ -10,33 +10,26 @@
 #include <RomanoNumero.hpp>
 
 
-class RomanoNumero {
-	
-	public:
-		RomanoNumero();
-		RomanoNumero(string numeroRomano) {
-			setNumeroRomano(numeroRomano);
-		}
-		RomanoNumero(long numeroDecimal) {
-			setNumeroDecimal(numeroDecimal);
-		}
-	
-		string getNumeroRomano() {
-			return numeroRomano;
-		}
-		long getNumeroDecimal() {
-			return numeroDecimal;
-		}
-	
-		void setNumeroRomano(string numeroRomano) {
-			this->numeroRomano = numeroRomano;
-		}
-		void setNumeroDecimal(long numeroDecimal) {
-			this->numeroDecimal = numeroDecimal;
-		}
+RomanoNumero::RomanoNumero() {
+  setNumeroDecimal(0);
+}
+RomanoNumero::RomanoNumero(string numeroRomano) {
+  setNumeroRomano(numeroRomano);
+}
+RomanoNumero::RomanoNumero(long numeroDecimal) {
+  setNumeroDecimal(numeroDecimal);
+}
 
-	private:
-		string numeroRomano;
-		long numeroDecimal;
-	
-};
+string RomanoNumero::getNumeroRomano() {
+  return numeroRomano;
+}
+long RomanoNumero::getNumeroDecimal() {
+  return numeroDecimal;
+}
+
+void RomanoNumero::setNumeroRomano(string numeroRomano) {
+  this->numeroRomano = numeroRomano;
+}
+void RomanoNumero::setNumeroDecimal(long numeroDecimal) {
+  this->numeroDecimal = numeroDecimal;
+}

@@ -12,6 +12,12 @@
 
 #include <RomanoNumero.hpp>
 
+
+TEST(InstanciandoRomanoNumero, InstanciandoNumeroRomano) {
+  RomanoNumero* numTeste = new RomanoNumero("XCVII");
+  EXPECT_EQ("XCVII", numTeste->getNumeroRomano());
+  delete numTeste;
+}
 /**
  * @brief Main do programa.
  *
@@ -19,6 +25,6 @@
  *
  */
 int main(int argc, char **argv) {
-		testing::InitGoogleTest(&argc, argv);
-	return RUN_ALL_TESTS();
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }

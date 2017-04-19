@@ -12,4 +12,21 @@ using namespace std;
  * @author Pedro Nogueira - 14/0065032
  *
  */
-class RomanoNumero;
+class RomanoNumero {
+
+  public:
+    RomanoNumero();
+    RomanoNumero(string numeroRomano);
+    RomanoNumero(long numeroDecimal);
+
+    string getNumeroRomano();
+    long getNumeroDecimal();
+
+    void setNumeroRomano(string numeroRomano);
+    void setNumeroDecimal(long numeroDecimal);
+
+  private:
+    string numeroRomano;
+    long numeroDecimal;
+
+};
