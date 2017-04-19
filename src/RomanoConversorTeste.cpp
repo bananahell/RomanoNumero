@@ -1,7 +1,3 @@
-#include <gtest/gtest.h>
-
-#include <RomanoNumero.hpp>
-
 /**
  * @file RomanoConversorTeste.cpp
  *
@@ -11,6 +7,10 @@
  * @author Pedro Nogueira - 14/0065032
  *
  */
+
+#include <gtest/gtest.h>
+
+#include <RomanoNumero.hpp>
 
 /**
  * @brief Main do programa.

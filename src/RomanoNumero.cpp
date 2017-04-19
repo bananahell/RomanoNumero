@@ -1,18 +1,15 @@
-#include <RomanoNumero.hpp>
-
-using namespace std;
-
 /**
  * @file RomanoNumero.cpp
- *
- * @brief Classe que contém um número e o converte para número decimal ou romano.
- *
- * Aqui tem a implementação de um grafo em si. Ele usa um sistema de matriz
- * para armazenar suas arestas.
+ * 
+ * @brief Arquivo com a classe RomanoNumero, classe responsável por converter número romanos em decimais e vice-versa.
  *
  * @author Pedro Nogueira - 14/0065032
  *
  */
+
+#include <RomanoNumero.hpp>
+
+
 class RomanoNumero {
 	
 	public:
