@@ -6,6 +6,7 @@
 # ObjDIR = *.o DIR
 # LibDIR = lib DIR
 # LibDIR -> enable when using, put $(LIBS) at end of gogo's command
+LibDIREC =./lib/
 LibDIR =./lib/ /home/user/gtest-1.7.0/include /home/user/gtest-1.7.0/lib/.libs/libgtest.a
 IncludeDIR =./include/
 CppDIR=./src/
@@ -17,9 +18,9 @@ LIBS=-lgtest
 
 # Vars:
 # -- ADAPT THIS IN YOUR PROGRAM --
-headers = RomanoConversor.hpp
+headers = RomanoNumero.hpp
 mainObject = RomanoConversorTeste
-objects = RomanoConversor.o
+objects = RomanoNumero.o
 
 # Set of *.hpp on which the *.cpp depend
 _DEPS = $(headers)
@@ -38,7 +39,7 @@ $(mainObject): $(OBJ)
 	$(CC) -g -o $@ $^ $(CFLAGS) $(LIBS)
 
 # Gets the files and organize in the lib include src/obj structure
-.PHONY: PrepareDIR
+.PHONY: prepareDIR
 prepareDIR:
 	mkdir -p $(LibDIR)
 	mkdir -p $(IncludeDIR)
