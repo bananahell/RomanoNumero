@@ -19,7 +19,7 @@
  */
 TEST(Instanciando, NenhumParametro) {
   RomanoNumero* numTeste = new RomanoNumero();
-  EXPECT_EQ(0, numTeste->getNumeroDecimal());
+  EXPECT_EQ(1, numTeste->getNumeroDecimal());
   delete numTeste;
 }
 /**
