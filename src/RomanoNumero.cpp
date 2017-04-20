@@ -127,6 +127,7 @@ long RomanoNumero::getNumeroDecimal() {
 
 void RomanoNumero::setNumeroRomano(string numeroRomano) {
   this->numeroRomano = numeroRomano;
+  converte(numeroRomano);
 }
 void RomanoNumero::setNumeroDecimal(long numeroDecimal) {
   this->numeroDecimal = numeroDecimal;

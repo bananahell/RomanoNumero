@@ -60,6 +60,7 @@ TEST(Setando, Romano) {
   RomanoNumero* numTeste = new RomanoNumero("XCVII");
   numTeste->setNumeroRomano("XLII");
   EXPECT_EQ("XLII", numTeste->getNumeroRomano());
+  EXPECT_EQ(42, numTeste->getNumeroDecimal());
   delete numTeste;
 }
 
