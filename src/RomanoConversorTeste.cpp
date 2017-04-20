@@ -14,7 +14,7 @@
 
 
 /**
- * @brief Teste InstanciandoRomanoNumero, testando se a classe está sendo instanciada sem parâmetro.
+ * @brief Teste Instanciando NenhumParametro, testando se a classe está sendo instanciada sem parâmetro.
  *
  */
 TEST(Instanciando, NenhumParametro) {
@@ -23,7 +23,7 @@ TEST(Instanciando, NenhumParametro) {
   delete numTeste;
 }
 /**
- * @brief Teste InstanciandoRomanoNumero, testando se a classe está sendo instanciada com número decimal.
+ * @brief Teste Instanciando NumeroDecimal, testando se a classe está sendo instanciada com número decimal.
  *
  */
 TEST(Instanciando, NumeroDecimal) {
@@ -32,7 +32,7 @@ TEST(Instanciando, NumeroDecimal) {
   delete numTeste;
 }
 /**
- * @brief Teste InstanciandoRomanoNumero, testando se a classe está sendo instanciada com número romano.
+ * @brief Teste Instanciando NumeroRomano, testando se a classe está sendo instanciada com número romano e já convertendo para decimal.
  *
  */
 TEST(Instanciando, NumeroRomano) {
@@ -43,7 +43,7 @@ TEST(Instanciando, NumeroRomano) {
 }
 
 /**
- * @brief Teste InstanciandoRomanoNumero, testando se a classe está sendo instanciada com número romano.
+ * @brief Teste Setando Decimal, testando se a classe está setando números decimais no objeto corretamente.
  *
  */
 TEST(Setando, Decimal) {
@@ -53,7 +53,7 @@ TEST(Setando, Decimal) {
   delete numTeste;
 }
 /**
- * @brief Teste InstanciandoRomanoNumero, testando se a classe está sendo instanciada com número romano.
+ * @brief Teste Setando Romano, testando se a classe está setando números romanos no objeto corretamente.
  *
  */
 TEST(Setando, Romano) {
