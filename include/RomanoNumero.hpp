@@ -18,23 +18,25 @@ class RomanoNumero {
   public:
     RomanoNumero();
     RomanoNumero(string numeroRomano);
-    RomanoNumero(long numeroDecimal);
+    RomanoNumero(int numeroDecimal);
 
     string getNumeroRomano();
-    long getNumeroDecimal();
+    int getNumeroDecimal();
 
     void setNumeroRomano(string numeroRomano);
-    void setNumeroDecimal(long numeroDecimal);
+    void setNumeroDecimal(int numeroDecimal);
 
   private:
     string numeroRomano;
-    long numeroDecimal;
+    int numeroDecimal;
 
-    void converte(long numeroDecimal);
+    void converte(int numeroDecimal);
     void converte(string numeroRomano);
     int converteUmaLetra(char letraAtual);
     int adicionaMesmasLetras(vector<int> letras, int i);
     int adicionaOutrasLetras(vector<int> letras, int i);
     int subtraiLetras(vector<int> letras, int i);
+    void constroiRomano(int numero);
+    void insereLetrasRomanas(int numero, int grandeza);
 
 };

@@ -18,7 +18,7 @@ RomanoNumero::RomanoNumero(string numeroRomano) {
   setNumeroRomano(numeroRomano);
   converte(numeroRomano);
 }
-RomanoNumero::RomanoNumero(long numeroDecimal) {
+RomanoNumero::RomanoNumero(int numeroDecimal) {
   setNumeroDecimal(numeroDecimal);
   /* converte(numeroDecimal); */
 }
@@ -34,7 +34,6 @@ RomanoNumero::RomanoNumero(long numeroDecimal) {
  * 4. A bar placed on top of a letter or string of letters increases the numeral's value by 1,000 times.
  */
 void RomanoNumero::converte(string numeroRomano) {
-	
     
     numeroDecimal = 0;
     vector<int> letras;
@@ -54,7 +53,17 @@ void RomanoNumero::converte(string numeroRomano) {
     }
 	
 }
-void RomanoNumero::converte(long numeroDecimal) {
+void RomanoNumero::converte(int numeroDec) {
+  
+  numeroRomano = "";
+  /* SEM A REGRA 4, SÓ VOU ATÉ 3999 */
+  constroiRomano(numeroDec - numeroDec%1000);
+  numeroDec -= (numeroDec/1000) * 1000;
+  constroiRomano(numeroDec - numeroDec%100);
+  numeroDec -= (numeroDec/100) * 100;
+  constroiRomano(numeroDec - numeroDec%10);
+  numeroDec -= (numeroDec/10) * 10;
+  constroiRomano(numeroDec);
   
 }
 
@@ -84,7 +93,6 @@ int RomanoNumero::converteUmaLetra(char letraAtual) {
   }
   return -1;
 }
-
 int RomanoNumero::adicionaMesmasLetras(vector<int> letras, int i) {
   int resultado = letras[i] + letras[i+1];
   if (letras[i] == letras[i+2]) {
@@ -117,11 +125,140 @@ int RomanoNumero::subtraiLetras(vector<int> letras, int i) {
   return i + 1;
 }
 
+void RomanoNumero::constroiRomano(int numero) {
+  if (numero/1000 > 0) {
+      insereLetrasRomanas(numero/1000, 1000);
+  } else if (numero/100 > 0) {
+      insereLetrasRomanas(numero/100, 100);
+  } else if (numero/10 > 0) {
+      insereLetrasRomanas(numero/10, 10);
+  } else {
+      insereLetrasRomanas(numero, 1);
+  }
+}
+void RomanoNumero::insereLetrasRomanas(int numero, int grandeza) {
+  switch (grandeza) {
+    case 1000:
+      switch (numero) {
+        case 1:
+          numeroRomano.append("M");
+          break;
+        case 2:
+          numeroRomano.append("MM");
+          break;
+        case 3:
+          numeroRomano.append("MMM");
+          break;
+        /* 
+         * SEM A REGRA 4, SÓ VOU ATÉ 3999
+         * case 5:
+         * case 6:
+         * case 7:
+         * case 8:
+         */
+      }
+      break;
+    case 100:
+      switch (numero) {
+        case 1:
+          numeroRomano.append("C");
+          break;
+        case 2:
+          numeroRomano.append("CC");
+          break;
+        case 3:
+          numeroRomano.append("CCC");
+          break;
+        case 4:
+          numeroRomano.append("CD");
+          break;
+        case 5:
+          numeroRomano.append("D");
+          break;
+        case 6:
+          numeroRomano.append("DC");
+          break;
+        case 7:
+          numeroRomano.append("DCC");
+          break;
+        case 8:
+          numeroRomano.append("DCCC");
+          break;
+        case 9:
+          numeroRomano.append("CM");
+          break;
+      }
+      break;
+    case 10:
+      switch (numero) {
+        case 1:
+          numeroRomano.append("X");
+          break;
+        case 2:
+          numeroRomano.append("XX");
+          break;
+        case 3:
+          numeroRomano.append("XXX");
+          break;
+        case 4:
+          numeroRomano.append("XL");
+          break;
+        case 5:
+          numeroRomano.append("L");
+          break;
+        case 6:
+          numeroRomano.append("LX");
+          break;
+        case 7:
+          numeroRomano.append("LXX");
+          break;
+        case 8:
+          numeroRomano.append("LXXX");
+          break;
+        case 9:
+          numeroRomano.append("XC");
+          break;
+      }
+      break;
+    case 1:
+      switch (numero) {
+        case 1:
+          numeroRomano.append("I");
+          break;
+        case 2:
+          numeroRomano.append("II");
+          break;
+        case 3:
+          numeroRomano.append("III");
+          break;
+        case 4:
+          numeroRomano.append("IV");
+          break;
+        case 5:
+          numeroRomano.append("V");
+          break;
+        case 6:
+          numeroRomano.append("VI");
+          break;
+        case 7:
+          numeroRomano.append("VII");
+          break;
+        case 8:
+          numeroRomano.append("VIII");
+          break;
+        case 9:
+          numeroRomano.append("IX");
+          break;
+      }
+      break;
+  }
+}
+
 
 string RomanoNumero::getNumeroRomano() {
   return numeroRomano;
 }
-long RomanoNumero::getNumeroDecimal() {
+int RomanoNumero::getNumeroDecimal() {
   return numeroDecimal;
 }
 
@@ -129,6 +266,7 @@ void RomanoNumero::setNumeroRomano(string numeroRomano) {
   this->numeroRomano = numeroRomano;
   converte(numeroRomano);
 }
-void RomanoNumero::setNumeroDecimal(long numeroDecimal) {
+void RomanoNumero::setNumeroDecimal(int numeroDecimal) {
   this->numeroDecimal = numeroDecimal;
+  converte(numeroDecimal);
 }

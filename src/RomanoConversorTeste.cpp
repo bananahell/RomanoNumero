@@ -14,21 +14,23 @@
 
 
 /**
- * @brief Teste Instanciando NenhumParametro, testando se a classe está sendo instanciada sem parâmetro.
+ * @brief Teste Instanciando NenhumParametro, testando se a classe está sendo instanciada corretamente sem parâmetro.
  *
  */
 TEST(Instanciando, NenhumParametro) {
   RomanoNumero* numTeste = new RomanoNumero();
   EXPECT_EQ(1, numTeste->getNumeroDecimal());
+  EXPECT_EQ("I", numTeste->getNumeroRomano());
   delete numTeste;
 }
 /**
- * @brief Teste Instanciando NumeroDecimal, testando se a classe está sendo instanciada com número decimal.
+ * @brief Teste Instanciando NumeroDecimal, testando se a classe está sendo instanciada com número decimal e já convertendo para romano.
  *
  */
 TEST(Instanciando, NumeroDecimal) {
   RomanoNumero* numTeste = new RomanoNumero(42);
   EXPECT_EQ(42, numTeste->getNumeroDecimal());
+  EXPECT_EQ("XLII", numTeste->getNumeroRomano());
   delete numTeste;
 }
 /**
@@ -48,8 +50,10 @@ TEST(Instanciando, NumeroRomano) {
  */
 TEST(Setando, Decimal) {
   RomanoNumero* numTeste = new RomanoNumero(42);
+  EXPECT_EQ("XLII", numTeste->getNumeroRomano());
   numTeste->setNumeroDecimal(97);
   EXPECT_EQ(97, numTeste->getNumeroDecimal());
+  EXPECT_EQ("xcvii", numTeste->getNumeroRomano());
   delete numTeste;
 }
 /**
@@ -58,6 +62,7 @@ TEST(Setando, Decimal) {
  */
 TEST(Setando, Romano) {
   RomanoNumero* numTeste = new RomanoNumero("XCVII");
+  EXPECT_EQ(97, numTeste->getNumeroDecimal());
   numTeste->setNumeroRomano("XLII");
   EXPECT_EQ("XLII", numTeste->getNumeroRomano());
   EXPECT_EQ(42, numTeste->getNumeroDecimal());
