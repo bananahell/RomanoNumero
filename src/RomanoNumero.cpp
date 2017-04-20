@@ -16,7 +16,7 @@ RomanoNumero::RomanoNumero() {
 }
 RomanoNumero::RomanoNumero(string numeroRomano) {
   setNumeroRomano(numeroRomano);
-  /* converte(numeroRomano); */
+  converte(numeroRomano);
 }
 RomanoNumero::RomanoNumero(long numeroDecimal) {
   setNumeroDecimal(numeroDecimal);
@@ -33,62 +33,88 @@ RomanoNumero::RomanoNumero(long numeroDecimal) {
  *   c. Do not subtract a number from one that is more than 10 times greater (that is, you can subtract 1 from 10 [IX] but not 1 from 20—there is no such number as IXX.)
  * 4. A bar placed on top of a letter or string of letters increases the numeral's value by 1,000 times.
  */
-void converte(string numeroRomano) {
+void RomanoNumero::converte(string numeroRomano) {
 	
-  try {
     
-    long resultado;
+    numeroDecimal = 0;
     vector<int> letras;
-    for(int i = 0; i < numeroRomano.size(); i++) {
+    for (unsigned int i = 0; i < numeroRomano.size(); i++) {
       letras.push_back(converteUmaLetra(numeroRomano.at(i)));
     }
     letras.push_back(0);
     
-    for(int i = 0; i < numeroRomano.size(); i++) {
-      if(letras[i] == letras[i+1]) {
-        /* resultado += adicionaMesmasLetras(letras, i); */
-      } else if(letras[i] > letras[i+1]) {
-        /* resultado += adicionaOutrasLetras(letras, i); */
+    for (unsigned int i = 0; i < numeroRomano.size(); i++) {
+      if (letras[i] == letras[i+1]) {
+        i = adicionaMesmasLetras(letras, i);
+      } else if (letras[i] > letras[i+1]) {
+        i = adicionaOutrasLetras(letras, i);
       } else {
-        /* resultado += subtraiLetras(letras, i); */
+        i = subtraiLetras(letras, i);
       }
     }
-    
-    /* setNumeroDecimal(resultado); */
-    
-  } catch (Exception e) {
-    
-  }
 	
 }
-void converte(long numeroDecimal) {
-	
+void RomanoNumero::converte(long numeroDecimal) {
+  
 }
 
-int converteUmaLetra(char letraAtual) {
-  switch(letraAtual) {
+int RomanoNumero::converteUmaLetra(char letraAtual) {
+  switch (letraAtual) {
     case 'i':
     case 'I':
-      return I;
+      return 1;
     case 'v':
     case 'V':
-      return V;
+      return 5;
     case 'x':
     case 'X':
-      return X;
+      return 10;
     case 'l':
     case 'L':
-      return L;
+      return 50;
     case 'c':
     case 'C':
-      return C;
+      return 100;
     case 'd':
     case 'D':
-      return D;
+      return 500;
     case 'm':
     case 'M':
-      return M;
+      return 1000;
   }
+  return -1;
+}
+
+int RomanoNumero::adicionaMesmasLetras(vector<int> letras, int i) {
+  int resultado = letras[i] + letras[i+1];
+  if (letras[i] == letras[i+2]) {
+    resultado += letras[i+2];
+    numeroDecimal += resultado;
+    return i + 1;
+  }
+  numeroDecimal += resultado;
+  return i + 1;
+}
+int RomanoNumero::adicionaOutrasLetras(vector<int> letras, int i) {
+  int resultado = letras[i] + letras[i+1];
+  int j;
+  for (j = 0; j > -1; j++) {
+    if (letras[i+j+2] == 0) {
+      numeroDecimal += resultado;
+      break;
+    }
+    if (letras[i+j+1] > letras[i+j+2]) {
+      resultado += letras[i+j+2];
+    } else {
+      numeroDecimal += resultado;
+      break;
+    }
+  }
+  return i + j + 1;
+}
+int RomanoNumero::subtraiLetras(vector<int> letras, int i) {
+  numeroDecimal += letras[i+1] - letras[i];
+  return i + 1;
 }
 
 

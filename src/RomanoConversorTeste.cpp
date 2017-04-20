@@ -38,6 +38,7 @@ TEST(Instanciando, NumeroDecimal) {
 TEST(Instanciando, NumeroRomano) {
   RomanoNumero* numTeste = new RomanoNumero("XCVII");
   EXPECT_EQ("XCVII", numTeste->getNumeroRomano());
+  EXPECT_EQ(97, numTeste->getNumeroDecimal());
   delete numTeste;
 }
 

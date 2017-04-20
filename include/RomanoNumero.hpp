@@ -29,16 +29,12 @@ class RomanoNumero {
   private:
     string numeroRomano;
     long numeroDecimal;
-    const int I = 1;
-    const int V = 5;
-    const int X = 10;
-    const int L = 50;
-    const int C = 100;
-    const int D = 500;
-    const int M = 1000;
 
     void converte(long numeroDecimal);
     void converte(string numeroRomano);
     int converteUmaLetra(char letraAtual);
+    int adicionaMesmasLetras(vector<int> letras, int i);
+    int adicionaOutrasLetras(vector<int> letras, int i);
+    int subtraiLetras(vector<int> letras, int i);
 
 };
