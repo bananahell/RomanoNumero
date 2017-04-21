@@ -48,7 +48,7 @@ TEST(Instanciando, XCVII) {
  * @brief Teste Setando Decimal, testando se a classe está setando números decimais no objeto corretamente.
  *
  */
-TEST(Setando, 42_97) {
+TEST(Setando, de42para97) {
   RomanoNumero* numTeste = new RomanoNumero(42);
   EXPECT_EQ("XLII", numTeste->getNumeroRomano());
   numTeste->setNumeroDecimal(97);
@@ -60,10 +60,10 @@ TEST(Setando, 42_97) {
  * @brief Teste Setando Romano, testando se a classe está setando números romanos no objeto corretamente.
  *
  */
-TEST(Setando, XCVII_XLII) {
-  RomanoNumero* numTeste = new RomanoNumero("XCVII");
+TEST(Setando, deXCVIIparaXLII) {
+  RomanoNumero* numTeste = new RomanoNumero("xcvii");
   EXPECT_EQ(97, numTeste->getNumeroDecimal());
-  numTeste->setNumeroRomano("XLII");
+  numTeste->setNumeroRomano("xlii");
   EXPECT_EQ("XLII", numTeste->getNumeroRomano());
   EXPECT_EQ(42, numTeste->getNumeroDecimal());
   delete numTeste;
