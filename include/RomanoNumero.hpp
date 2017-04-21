@@ -25,6 +25,8 @@ class RomanoNumero {
 
     void setNumeroRomano(string numeroRomano);
     void setNumeroDecimal(int numeroDecimal);
+  
+    bool avaliaRomano(string numeroRomano);
 
   private:
     string numeroRomano;

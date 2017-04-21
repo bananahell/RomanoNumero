@@ -11,16 +11,21 @@
 
 
 RomanoNumero::RomanoNumero() {
-  setNumeroRomano("I");
-  setNumeroDecimal(1);
+  setNumeroRomano("N");
+  setNumeroDecimal(0);
 }
 RomanoNumero::RomanoNumero(string numeroRomano) {
-  setNumeroRomano(numeroRomano);
-  converte(numeroRomano);
+  if (avaliaRomano(numeroRomano)) {
+    setNumeroRomano(numeroRomano);
+    converte(numeroRomano);
+  } else {
+    setNumeroRomano("N");
+    converte(numeroRomano);
+  }
 }
 RomanoNumero::RomanoNumero(int numeroDecimal) {
   setNumeroDecimal(numeroDecimal);
-  /* converte(numeroDecimal); */
+  converte(numeroDecimal);
 }
 
 
@@ -53,22 +58,29 @@ void RomanoNumero::converte(string numeroRomano) {
     }
 	
 }
-void RomanoNumero::converte(int numeroDec) {
+void RomanoNumero::converte(int numeroDecimal) {
   
   numeroRomano = "";
-  /* SEM A REGRA 4, SÓ VOU ATÉ 3999 */
-  constroiRomano(numeroDec - numeroDec%1000);
-  numeroDec -= (numeroDec/1000) * 1000;
-  constroiRomano(numeroDec - numeroDec%100);
-  numeroDec -= (numeroDec/100) * 100;
-  constroiRomano(numeroDec - numeroDec%10);
-  numeroDec -= (numeroDec/10) * 10;
-  constroiRomano(numeroDec);
+  if (numeroDecimal == 0) {
+    numeroRomano = "N";
+  } else {
+    /* SEM A REGRA 4, SÓ VOU ATÉ 3999 */
+    constroiRomano(numeroDecimal - numeroDecimal%1000);
+    numeroDecimal -= (numeroDecimal/1000) * 1000;
+    constroiRomano(numeroDecimal - numeroDecimal%100);
+    numeroDecimal -= (numeroDecimal/100) * 100;
+    constroiRomano(numeroDecimal - numeroDecimal%10);
+    numeroDecimal -= (numeroDecimal/10) * 10;
+    constroiRomano(numeroDecimal);
+  }
   
 }
 
 int RomanoNumero::converteUmaLetra(char letraAtual) {
   switch (letraAtual) {
+    case 'n':
+    case 'N':
+      return 0;
     case 'i':
     case 'I':
       return 1;
@@ -254,6 +266,55 @@ void RomanoNumero::insereLetrasRomanas(int numero, int grandeza) {
   }
 }
 
+bool RomanoNumero::avaliaRomano(string numeroRomano) {
+  for (unsigned int i = 0; i < numeroRomano.size(); i++) {
+    
+    if (numeroRomano.size() != 0 && (numeroRomano.at(i) == 'N' || numeroRomano.at(i) == 'n')) {
+      return false;
+    }
+    
+    if (numeroRomano.at(i) != 'N' && numeroRomano.at(i) != 'n' && 
+        numeroRomano.at(i) != 'I' && numeroRomano.at(i) != 'i' && 
+        numeroRomano.at(i) != 'V' && numeroRomano.at(i) != 'v' && 
+        numeroRomano.at(i) != 'X' && numeroRomano.at(i) != 'x' && 
+        numeroRomano.at(i) != 'L' && numeroRomano.at(i) != 'l' && 
+        numeroRomano.at(i) != 'C' && numeroRomano.at(i) != 'c' && 
+        numeroRomano.at(i) != 'D' && numeroRomano.at(i) != 'd' && 
+        numeroRomano.at(i) != 'M' && numeroRomano.at(i) != 'm') {
+      return false;
+    }
+    
+    if (i < numeroRomano.size() - 1) {
+      
+      if (converteUmaLetra(numeroRomano.at(i)) <= converteUmaLetra(numeroRomano.at(i+1)) && 
+          (numeroRomano.at(i) == 'V' || numeroRomano.at(i) == 'v' ||
+           numeroRomano.at(i) == 'L' || numeroRomano.at(i) == 'l' ||
+           numeroRomano.at(i) == 'D' || numeroRomano.at(i) == 'd')) {
+        return false;
+      }
+      
+      if (converteUmaLetra(numeroRomano.at(i)) < converteUmaLetra(numeroRomano.at(i+1)) && 
+          converteUmaLetra(numeroRomano.at(i)) * 10 != converteUmaLetra(numeroRomano.at(i+1)) && 
+          converteUmaLetra(numeroRomano.at(i)) * 5 != converteUmaLetra(numeroRomano.at(i+1))) {
+        return false;
+      }
+      
+      if (i < numeroRomano.size() - 3) {
+        if (numeroRomano.at(i) == numeroRomano.at(i+1)) {
+          if (numeroRomano.at(i) == numeroRomano.at(i+2)) {
+            if (numeroRomano.at(i) == numeroRomano.at(i+3)) {
+              return false;
+            }
+          }
+        }
+      }
+      
+    }
+    
+  }
+  return true;
+}
+
 
 string RomanoNumero::getNumeroRomano() {
   return numeroRomano;
@@ -263,8 +324,10 @@ int RomanoNumero::getNumeroDecimal() {
 }
 
 void RomanoNumero::setNumeroRomano(string numeroRomano) {
-  this->numeroRomano = numeroRomano;
-  converte(numeroRomano);
+  if (avaliaRomano(numeroRomano)) {
+    this->numeroRomano = numeroRomano;
+    converte(numeroRomano);
+  }
 }
 void RomanoNumero::setNumeroDecimal(int numeroDecimal) {
   this->numeroDecimal = numeroDecimal;
