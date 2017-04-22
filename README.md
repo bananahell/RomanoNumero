@@ -8,13 +8,12 @@ UnB
 
 ## Uso do projeto
 
-*Classe **RomanoNumero** - converte números decimais em romanos e vice-versa ao instanciar.  
-<t>*Métodos get & set:*  
+* Método **avaliaRomano(número romano)** - avalia se o número romano passado é válido.  
+* Método **converteRomano(numero romano)** - usa *avaliaRomano()* e converte o número romano passado.  
 
-<t><t>getNumeroRomano();  
-<t><t>setNumeroRomano();  
-<t><t>getNumeroDecimal();  
-<t><t>setNumeroDecimal();  
-
-<t>Método **avaliaRomano(número romano)** - avalia se o número romano passado é válido.  
-<t>Método **converteRomano(numero romano)** - usa *avaliaRomano()* e converte o número romano passado.  
+* Classe **RomanoNumero** - converte números decimais em romanos e vice-versa ao instanciar.  
+  *Métodos get & set:*  
+   * getNumeroRomano();  
+   * setNumeroRomano();  
+   * getNumeroDecimal();  
+   * setNumeroDecimal();
