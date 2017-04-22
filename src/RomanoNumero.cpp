@@ -10,10 +10,7 @@
 #include <RomanoNumero.hpp>
 
 
-RomanoNumero::RomanoNumero() {
-  this->numeroRomano = "";
-  this->numeroDecimal = -1;
-}
+RomanoNumero::RomanoNumero(): numeroRomano(""), numeroDecimal(-1) {}
 RomanoNumero::RomanoNumero(string numeroRomano) {
   numeroDecimal = converteRomano(numeroRomano);
   if (numeroDecimal != -1) {

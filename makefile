@@ -13,7 +13,7 @@ CppDIR=./src/
 ObjDIR=./src/obj/
 CC=g++
 DB=gdb
-CFLAGS=-ansi -Wall -Wextra -I$(IncludeDIR) -pthread
+CFLAGS=-ansi -Wall -Wextra -I$(IncludeDIR) -pthread -ftest-coverage -fprofile-arcs
 LIBS=-lgtest
 
 # Vars:
@@ -58,6 +58,11 @@ execute:
 debug:
 	$(DB) ./$(mainObject)
 
+# Call for cppcheck
+.PHONY: cppcheck
+cppcheck:
+	cppcheck --check-config . -I./include --suppress=missingIncludeSystem
+
 # Call for *.o clean up
 .PHONY: clean
 clean:
@@ -67,9 +72,11 @@ clean:
 .PHONY: help
 help:
 	@echo "\n\t Makefile\n"
-	@echo " make = compiles program"
-	@echo " make prepareDIR = prepares project in the "lib include src/obj" structure (use this if all files are with this makefile)"
-	@echo " make execute = executes succesfully compiled program"
-	@echo " make debug = (gdb) debugs succesfully compiled program"
-	@echo " make clean = removes objects from obj directory\n"
+	@echo " make............= compiles program"
+	@echo " make prepareDIR.= prepares project in the "lib include src/obj" structure (use this if all files are with this makefile)"
+	@echo " make execute....= executes succesfully compiled program"
+	@echo " make debug......= (gdb) debugs succesfully compiled program"
+	@echo " make cppcheck...= invokes cppcheck on all .cpp files in the directory, checking for all types of messages*"
+	@echo "                         *(except missingIncludeSystem - cppceck can't find the gtest library)"
+	@echo " make clean......= removes objects from obj directory\n"
 	@echo " For use with program, change variables -headers- and -objects- inside makefile\n\n"

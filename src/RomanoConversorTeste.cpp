@@ -8,9 +8,9 @@
  *
  */
 
-#include <gtest/gtest.h>
-
 #include <RomanoNumero.hpp>
+
+#include <gtest/gtest.h>
 
 
 /**

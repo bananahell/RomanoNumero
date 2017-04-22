@@ -10,9 +10,9 @@
 #ifndef ROMANONUMERO_ROMANONUMERO_H
 #define ROMANONUMERO_ROMANONUMERO_H
 
-#include <string>
-
 #include <validaNumeroRomano.hpp>
+
+#include <string>
 
 #endif
 
@@ -46,7 +46,7 @@ class RomanoNumero {
      * @param numeroRomano - String contendo um número romano
      *
      */
-    RomanoNumero(string numeroRomano);
+    explicit RomanoNumero(string numeroRomano);
     /**
      * @brief Construtor decimal
      * 
@@ -55,7 +55,7 @@ class RomanoNumero {
      * @param numeroDecimal - Inteiro contendo um número decimal
      *
      */
-    RomanoNumero(int numeroDecimal);
+    explicit RomanoNumero(int numeroDecimal);
 
     /**
      * @brief Get do número romano
@@ -146,6 +146,7 @@ class RomanoNumero {
      * Adiciona no membro resultante numeroRomano letras correspondentes ao número romano.
      * Esse método em específico pega letras seguidas e idênticas do algarismo romano que se adicionam.
      *
+     * @param numeroDecimal - Número decimal processado até o momento. Essa função incrementa o que for passado de número romano diretamente na variável.
      * @param letras - Vetor de valores inteiros correspondentes aos valores individuais de cada uma das letras do número romano
      * @param i - Índice que indica onde no vetor passado começa a construção aditiva do número romano
      *
@@ -159,6 +160,7 @@ class RomanoNumero {
      * Adiciona no membro resultante numeroRomano letras correspondentes ao número romano.
      * Esse método em específico pega letras seguidas e diferentes do algarismo romano que se adicionam.
      *
+     * @param numeroDecimal - Número decimal processado até o momento. Essa função incrementa o que for passado de número romano diretamente na variável.
      * @param letras - Vetor de valores inteiros correspondentes aos valores individuais de cada uma das letras do número romano
      * @param i - Índice que indica onde no vetor passado começa a construção aditiva do número romano
      *
@@ -172,6 +174,7 @@ class RomanoNumero {
      * Adiciona no membro resultante numeroRomano letras correspondentes ao número romano.
      * Esse método em específico pega letras seguidas e diferentes do algarismo romano que se subtraem.
      *
+     * @param numeroDecimal - Número decimal processado até o momento. Essa função incrementa o que for passado de número romano diretamente na variável.
      * @param letras - Vetor de valores inteiros correspondentes aos valores individuais de cada uma das letras do número romano
      * @param i - Índice que indica onde no vetor passado começa a construção aditiva do número romano
      *

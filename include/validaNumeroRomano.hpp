@@ -56,6 +56,7 @@ int converteUmaLetra(char letraAtual);
  * Adiciona no membro resultante numeroRomano letras correspondentes ao número romano.
  * Esse método em específico pega letras seguidas e idênticas do algarismo romano que se adicionam.
  *
+ * @param numeroDecimal - Número decimal processado até o momento. Essa função incrementa o que for passado de número romano diretamente na variável.
  * @param letras - Vetor de valores inteiros correspondentes aos valores individuais de cada uma das letras do número romano
  * @param i - Índice que indica onde no vetor passado começa a construção aditiva do número romano
  *
@@ -69,6 +70,7 @@ int adicionaMesmasLetras(int* numeroDecimal, vector<int> letras, int i);
  * Adiciona no membro resultante numeroRomano letras correspondentes ao número romano.
  * Esse método em específico pega letras seguidas e diferentes do algarismo romano que se adicionam.
  *
+ * @param numeroDecimal - Número decimal processado até o momento. Essa função incrementa o que for passado de número romano diretamente na variável.
  * @param letras - Vetor de valores inteiros correspondentes aos valores individuais de cada uma das letras do número romano
  * @param i - Índice que indica onde no vetor passado começa a construção aditiva do número romano
  *
@@ -82,6 +84,7 @@ int adicionaOutrasLetras(int* numeroDecimal, vector<int> letras, int i);
  * Adiciona no membro resultante numeroRomano letras correspondentes ao número romano.
  * Esse método em específico pega letras seguidas e diferentes do algarismo romano que se subtraem.
  *
+ * @param numeroDecimal - Número decimal processado até o momento. Essa função incrementa o que for passado de número romano diretamente na variável.
  * @param letras - Vetor de valores inteiros correspondentes aos valores individuais de cada uma das letras do número romano
  * @param i - Índice que indica onde no vetor passado começa a construção aditiva do número romano
  *
