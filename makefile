@@ -18,9 +18,9 @@ LIBS=-lgtest
 
 # Vars:
 # -- ADAPT THIS IN YOUR PROGRAM --
-headers = RomanoNumero.hpp
+headers = RomanoNumero.hpp validaNumeroRomano.hpp
 mainObject = RomanoConversorTeste
-objects = RomanoNumero.o
+objects = RomanoNumero.o validaNumeroRomano.o
 
 # Set of *.hpp on which the *.cpp depend
 _DEPS = $(headers)
@@ -45,7 +45,7 @@ prepareDIR:
 	mkdir -p $(IncludeDIR)
 	mkdir -p $(CppDIR)
 	mkdir -p $(ObjDIR)
-	mv *.hpp $(IncludeDIR); true
+	mv *.h $(IncludeDIR); true
 	mv *.cpp $(CppDIR); true
 
 # Call for execution

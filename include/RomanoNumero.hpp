@@ -1,5 +1,5 @@
 /**
- * @file RomanoNumero.cpp
+ * @file RomanoNumero.hpp
  * 
  * @brief Arquivo com a declaração de RomanoNumero, classe responsável por converter número romanos em decimais e vice-versa
  *
@@ -7,8 +7,14 @@
  *
  */
 
+#ifndef ROMANONUMERO_ROMANONUMERO_H
+#define ROMANONUMERO_ROMANONUMERO_H
+
 #include <string>
-#include <vector>
+
+#include <validaNumeroRomano.hpp>
+
+#endif
 
 using namespace std;
 
@@ -50,18 +56,6 @@ class RomanoNumero {
      *
      */
     RomanoNumero(int numeroDecimal);
-    
-    /**
-     * @brief Avaliador de números romanos
-     * 
-     * Checa se o número romano passado para o programa é um número válido.
-     *
-     * @param numeroRomano - String contendo um número romano
-     *
-     * @return bool - True para se o número romano passado é válido
-     *
-     */
-    bool avaliaRomano(string numeroRomano);
 
     /**
      * @brief Get do número romano
@@ -113,16 +107,7 @@ class RomanoNumero {
      * @param numeroDecimal - Inteiro contendo um número decimal
      *
      */
-    void converte(int numeroDecimal);
-    /**
-     * @brief Conversor de número romano para decimal
-     * 
-     * Converte o número romano passado para um número decimal já no membro numeroDecimal da própria classe.
-     *
-     * @param numeroRomano - String contendo um número romano
-     *
-     */
-    void converte(string numeroRomano);
+    void converteDecimal(int numeroDecimal);
     /**
      * @brief Conversor de letras de algarismos romanos para números
      * 
@@ -133,7 +118,7 @@ class RomanoNumero {
      * @return int - Número correspondente ao algarismo romano passado como parâmetro
      *
      */
-    int converteUmaLetra(char letraAtual);
+    friend int converteUmaLetra(char letraAtual);
     /**
      * @brief Adicionador de letras iguais de algarismos romanos ao número romano resultante
      * 
@@ -146,7 +131,7 @@ class RomanoNumero {
      * @return i - Índice final da construção aditiva do número romano desejada com esse método
      *
      */
-    int adicionaMesmasLetras(vector<int> letras, int i);
+    friend int adicionaMesmasLetras(int* numeroDecimal, vector<int> letras, int i);
     /**
      * @brief Adicionador de letras diferentes aditivas de algarismos romanos ao número romano resultante
      * 
@@ -159,7 +144,7 @@ class RomanoNumero {
      * @return i - Índice final da construção aditiva do número romano desejada com esse método
      *
      */
-    int adicionaOutrasLetras(vector<int> letras, int i);
+    friend int adicionaOutrasLetras(int* numeroDecimal, vector<int> letras, int i);
     /**
      * @brief Adicionador de letras diferentes subtrativas de algarismos romanos ao número romano resultante
      * 
@@ -172,7 +157,7 @@ class RomanoNumero {
      * @return i - Índice final da construção subtrativa do número romano desejada com esse método
      *
      */
-    int subtraiLetras(vector<int> letras, int i);
+    friend int subtraiLetras(int* numeroDecimal, vector<int> letras, int i);
     /**
      * @brief Construtor do número romano
      * 
@@ -192,5 +177,27 @@ class RomanoNumero {
      *
      */
     void insereLetrasRomanas(int numero, int grandeza);
+  
+  
+    /**
+     * @brief Conversor de número romano para decimal
+     * 
+     * Converte o número romano passado para um número decimal já no membro numeroDecimal da própria classe.
+     *
+     * @param numeroRomano - String contendo um número romano
+     *
+     */
+    friend int converteRomano(string numeroRomano);
+    /**
+     * @brief Avaliador de números romanos
+     * 
+     * Checa se o número romano passado para o programa é um número válido.
+     *
+     * @param numeroRomano - String contendo um número romano
+     *
+     * @return bool - True para se o número romano passado é válido
+     *
+     */
+    friend bool avaliaRomano(string numeroRomano);
 
 };
