@@ -128,10 +128,10 @@ int adicionaMesmasLetras(int* numeroDecimal, vector<int> letras, int i) {
   int resultado = letras[i] + letras[i+1];
   if (letras[i] == letras[i+2]) {
     resultado += letras[i+2];
-    numeroDecimal += resultado;
+    *numeroDecimal += resultado;
     return i + 1;
   }
-  numeroDecimal += resultado;
+  *numeroDecimal += resultado;
   return i + 1;
 }
 int adicionaOutrasLetras(int* numeroDecimal, vector<int> letras, int i) {
@@ -139,19 +139,19 @@ int adicionaOutrasLetras(int* numeroDecimal, vector<int> letras, int i) {
   int j;
   for (j = 0; j > -1; j++) {
     if (letras[i+j+2] == 0) {
-      numeroDecimal += resultado;
+      *numeroDecimal += resultado;
       break;
     }
     if (letras[i+j+1] > letras[i+j+2]) {
       resultado += letras[i+j+2];
     } else {
-      numeroDecimal += resultado;
+      *numeroDecimal += resultado;
       break;
     }
   }
   return i + j + 1;
 }
 int subtraiLetras(int* numeroDecimal, vector<int> letras, int i) {
-  numeroDecimal += letras[i+1] - letras[i];
+  *numeroDecimal += letras[i+1] - letras[i];
   return i + 1;
 }
