@@ -109,6 +109,27 @@ class RomanoNumero {
      */
     void converteDecimal(int numeroDecimal);
     /**
+     * @brief Construtor do número romano
+     * 
+     * A partir de um decimal, esse método constrói o número romano equivalente.
+     *
+     * @param numero - Número decimal a ser convetido
+     *
+     */
+    void constroiRomano(int numero);
+    /**
+     * @brief Inseridor de letras no número romano resultante
+     * 
+     * Insere no membro numeroRomano da própria classe as letras correspondentes à sua devida construção.
+     *
+     * @param numero - Número decimal a ser convetido
+     * @param grandeza - Indicador do tamanho do número em questão, sendo ele divisível por 1000, 100, 10 ou somente 1
+     *
+     */
+    void insereLetrasRomanas(int numero, int grandeza);
+
+
+    /**
      * @brief Conversor de letras de algarismos romanos para números
      * 
      * Converte uma única letra de algarismos romanos em um inteiro.
@@ -158,27 +179,7 @@ class RomanoNumero {
      *
      */
     friend int subtraiLetras(int* numeroDecimal, vector<int> letras, int i);
-    /**
-     * @brief Construtor do número romano
-     * 
-     * A partir de um decimal, esse método constrói o número romano equivalente.
-     *
-     * @param numero - Número decimal a ser convetido
-     *
-     */
-    void constroiRomano(int numero);
-    /**
-     * @brief Inseridor de letras no número romano resultante
-     * 
-     * Insere no membro numeroRomano da própria classe as letras correspondentes à sua devida construção.
-     *
-     * @param numero - Número decimal a ser convetido
-     * @param grandeza - Indicador do tamanho do número em questão, sendo ele divisível por 1000, 100, 10 ou somente 1
-     *
-     */
-    void insereLetrasRomanas(int numero, int grandeza);
-  
-  
+
     /**
      * @brief Conversor de número romano para decimal
      * 

@@ -19,8 +19,8 @@
  */
 TEST(Instanciando, NenhumParametro) {
   RomanoNumero* numTeste = new RomanoNumero();
-  EXPECT_EQ(0, numTeste->getNumeroDecimal());
-  EXPECT_EQ("N", numTeste->getNumeroRomano());
+  EXPECT_EQ(-1, numTeste->getNumeroDecimal());
+  EXPECT_EQ("", numTeste->getNumeroRomano());
   delete numTeste;
 }
 /**
@@ -63,7 +63,7 @@ TEST(Setando, de42para97) {
 TEST(Setando, deXCVIIparaXLII) {
   RomanoNumero* numTeste = new RomanoNumero("xcvii");
   EXPECT_EQ(97, numTeste->getNumeroDecimal());
-  numTeste->setNumeroRomano("xlii");
+  numTeste->setNumeroRomano("XLII");
   EXPECT_EQ("XLII", numTeste->getNumeroRomano());
   EXPECT_EQ(42, numTeste->getNumeroDecimal());
   delete numTeste;

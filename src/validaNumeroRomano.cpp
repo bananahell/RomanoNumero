@@ -41,7 +41,7 @@ int converteRomano(string numeroRomano) {
       i = subtraiLetras(&numeroDecimal, letras, i);
     }
   }
-  
+
   return numeroDecimal;
 
 }

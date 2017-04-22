@@ -11,18 +11,25 @@
 
 
 RomanoNumero::RomanoNumero() {
-  setNumeroRomano("N");
-  setNumeroDecimal(0);
+  this->numeroRomano = "";
+  this->numeroDecimal = -1;
 }
 RomanoNumero::RomanoNumero(string numeroRomano) {
   numeroDecimal = converteRomano(numeroRomano);
   if (numeroDecimal != -1) {
     setNumeroRomano(numeroRomano);
+  } else {
+    this->numeroRomano = "";
   }
 }
 RomanoNumero::RomanoNumero(int numeroDecimal) {
-  setNumeroDecimal(numeroDecimal);
-  converteDecimal(numeroDecimal);
+  if (numeroDecimal < 4000) {
+    setNumeroDecimal(numeroDecimal);
+    converteDecimal(numeroDecimal);
+  } else {
+    this->numeroDecimal = -1;
+    this->numeroRomano = "";
+  }
 }
 
 
@@ -183,11 +190,17 @@ int RomanoNumero::getNumeroDecimal() {
 
 void RomanoNumero::setNumeroRomano(string numeroRomano) {
   numeroDecimal = converteRomano(numeroRomano);
+  this->numeroRomano = "";
   if (numeroDecimal != -1) {
     this->numeroRomano = numeroRomano;
   }
 }
 void RomanoNumero::setNumeroDecimal(int numeroDecimal) {
-  this->numeroDecimal = numeroDecimal;
-  converteDecimal(numeroDecimal);
+  if (numeroDecimal < 4000) {
+    this->numeroDecimal = numeroDecimal;
+    converteDecimal(numeroDecimal);
+  } else {
+    this->numeroDecimal = -1;
+    this->numeroRomano = "";
+  }
 }
